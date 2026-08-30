@@ -25,3 +25,11 @@
 ### 8. Infrastructure Strategy (Minimal First)
 - **Decision:** Keep development lightweight with zero external container dependencies (no Redis or shared DTO libraries upfront).
 - **Why:** Build the foundational application logic first; add external message brokers or shared modules only when necessary.
+
+### 9. Unified Single `.env` Architecture
+- **Decision:** Maintain a single `.env` (and `.env.example`) at the monorepo root.
+- **Why:** Avoids scattered duplicate `.env` files across subfolders.
+  - **Frontend:** Reads root `.env` via Vite's `envDir: '../../'`.
+  - **Java Backend & WebSocket:** Loaded via `dotenv-cli` into OS environment variables and injected via Spring's `${VAR_NAME}` in `application.properties`.
+  - **Database:** Directly connects to Cloud PostgreSQL (Aiven) over SSL using `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`.
+

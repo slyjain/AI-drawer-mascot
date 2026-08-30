@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev:backend": "mvn -f apps/backend spring-boot:run",
-    "dev:websocket": "mvn -f apps/websocket spring-boot:run",
+    "dev:backend": "dotenv -e .env -- mvn -f apps/backend spring-boot:run",
+    "dev:websocket": "dotenv -e .env -- mvn -f apps/websocket spring-boot:run",
     "dev:frontend": "npm --prefix apps/frontend run dev",
     "dev": "concurrently -n \"backend,websocket,frontend\" -c \"blue,magenta,cyan\" \"npm run dev:backend\" \"npm run dev:websocket\" \"npm run dev:frontend\"",
     "build:java": "mvn clean install",
@@ -12,6 +12,7 @@
     "build": "npm run build:java && npm run build:frontend"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "dotenv-cli": "^7.4.4"
   }
 }
