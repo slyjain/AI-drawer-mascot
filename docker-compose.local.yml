@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  primary-backend:
+    build:
+      # The context is app-backend so Docker can see the parent pom.xml
+      context: ./app-backend
+      dockerfile: primary-backend/local.Dockerfile
+    ports:
+      # Maps your local machine port to the container's port
+      - "${BACKEND_PORT:-8080}:8080"
+    env_file:
+      # Automatically loads the database URL and credentials from your .env file
+      - .env
