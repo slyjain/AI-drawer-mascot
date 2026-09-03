@@ -33,12 +33,12 @@ if [ ! -d "node_modules" ]; then
 fi
 
 echo "⏳ Starting: Frontend server (background)..."
-local start_time=$(date +%s)
+start_time=$(date +%s)
 npm run dev > frontend.log 2>&1 &
 PID=$!
 echo $PID > ../.frontend.pid
-local end_time=$(date +%s)
-local duration=$((end_time - start_time))
+end_time=$(date +%s)
+duration=$((end_time - start_time))
 echo "✅ Finished: Frontend server (background) in $duration seconds. (PID: $PID)"
 echo "------------------------------------------------"
 cd .. || exit
