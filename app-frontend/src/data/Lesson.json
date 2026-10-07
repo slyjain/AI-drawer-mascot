@@ -1,0 +1,37 @@
+{
+  "course": {
+    "id": "bitmask-dp",
+    "title": "Bitmask Dynamic Programming",
+    "description": "A technique to solve combinatorial problems efficiently by representing subsets as integers.",
+    "topics": [
+      {
+        "id": "topic-1",
+        "title": "Subsets as Binary Numbers",
+        "content": "A bitmask represents a subset of items using a binary number. A '1' at the i-th position means the i-th item is included in the subset. A '0' means it is excluded. For example, given a set of 3 items [A, B, C], the binary string '101' (which evaluates to the decimal number 5) means that items A and C are included, while item B is excluded.",
+        "learning_objectives": [
+          "Understand the mapping between subsets and binary representations.",
+          "Convert between binary logic and base-10 integers."
+        ]
+      },
+      {
+        "id": "topic-2",
+        "title": "Essential Bitwise Operations",
+        "content": "To manipulate these subsets in code, we use bitwise operators. 1. Left Shift (1 << i): Creates a mask with only the i-th bit set to 1. 2. Check bit (mask & (1 << i)): Evaluates to non-zero if the i-th item is in the subset. 3. Set bit (mask | (1 << i)): Adds the i-th item to the subset. 4. Clear bit (mask & ~(1 << i)): Removes the i-th item from the subset. 5. Toggle bit (mask ^ (1 << i)): Flips the state of the i-th item.",
+        "learning_objectives": [
+          "Use bitwise AND to check subset membership.",
+          "Use bitwise OR to union subsets or add elements.",
+          "Use bitwise XOR and NOT for advanced manipulations."
+        ]
+      },
+      {
+        "id": "topic-3",
+        "title": "DP State Representation",
+        "content": "In Dynamic Programming problems like the Traveling Salesperson Problem (TSP), we must track which nodes or cities we have already visited. Instead of passing around large boolean arrays or hash sets, we use a single integer (the bitmask). The DP state typically looks like `dp(mask, current_node)`. This optimization reduces state lookup time to O(1) and is highly memory efficient.",
+        "learning_objectives": [
+          "Replace visited arrays with an integer bitmask.",
+          "Formulate DP transitions using bitwise operators."
+        ]
+      }
+    ]
+  }
+}
